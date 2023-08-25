@@ -18,6 +18,8 @@
     "password": "nv9rurOAOlgaIIU1m42A",
     "database": "railway",
     "host": "containers-us-west-180.railway.app",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "url": "mysql://root:nv9rurOAOlgaIIU1m42A@containers-us-west-180.railway.app:7826/railway",
+    "port": "7826"
   }
 }
