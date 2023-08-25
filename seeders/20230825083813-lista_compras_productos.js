@@ -6,7 +6,7 @@ module.exports = {
     await queryInterface.bulkInsert('lista_compras_productos', [
       {
         idLista: 11,
-        idProducto: 2
+        idProducto: 3
       }
       
       ], {});

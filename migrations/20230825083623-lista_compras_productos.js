@@ -1,14 +1,15 @@
 'use strict';  
 
-const Lista_compras_productos = require('../models').lista_compras_productos;
+const Listacompra = require('../models').listacompra;
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await Lista_compras_productos.sync();
+    await Listacompra.sync();
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('lista_compras_productos');
+    await queryInterface.dropTable('listacompra');
   }
 };
+

@@ -5,8 +5,8 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('categoria', [
       {
-        PK_idCategoria: 3,
-        nombre: "alimentos",
+        PK_idCategoria: 50,
+        nombre: "comida",
       }
       
       ], {});

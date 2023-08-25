@@ -5,7 +5,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('supermercado', [
       {
-        PK_idSupermercado: 1,
+        PK_idSupermercado: 2,
         nombre: "Supermaxi Ceibos",
         direccion: "C.C. Riocentro Ceibos"
       }
