@@ -5,8 +5,7 @@
   "scripts": {
     "swagger-autogen": "node swagger.js",
     "packages:install": "npm install sequelize pg && npm install --save-dev sequelize-cli",
-    "db:reset": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all", 
-    "start": "npm run packages:install && npm run db:reset && node ./bin/www"
+    "start": "npm run packages:install && npm run && node ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -19,10 +18,14 @@
     "jsonwebtoken": "^9.0.1",
     "morgan": "~1.9.1",
     "mysql2": "^3.6.0",
+    "pg": "^8.11.3",
     "railway": "^2.0.17",
     "sequelize": "^6.32.1",
     "sequelize-auto": "^0.8.8",
     "swagger-autogen": "^2.23.5",
     "swagger-ui-express": "^5.0.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.1"
   }
 }

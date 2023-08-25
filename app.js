@@ -49,7 +49,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 /* RELACIÓN ENTRE LA RUTA DEL URL CON LA REFERENCIA CON EL MANEJADOR DE RUTAS */
-app.use('/rest/categoria', authenticateJWT, categoriaRouter);
+app.use('/rest/categoria', categoriaRouter);
 app.use('/rest/cliente', clienteRouter);
 app.use('/rest/listacompra', listacompraRouter);
 app.use('/rest/producto', productoRouter);
