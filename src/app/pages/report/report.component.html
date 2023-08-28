@@ -1,0 +1,20 @@
+<!-- Tabla con datos -->
+<mat-form-field class = "select-b">
+    <mat-label>Selecciona una opción</mat-label>
+    <mat-select [formControl]="usuariosSelect" (selectionChange)="selection($event.value)">
+      <mat-option *ngFor="let item of data" [value]="item.PK_user_id">{{ item.Nombre }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-table [dataSource]="dataSource">
+    <!-- Genera las columnas automáticamente -->
+    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+      <mat-header-cell *matHeaderCellDef> {{ column }} </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{ user[column] }} </mat-cell>
+    </ng-container>
+  
+    <!-- Agrega las columnas a la tabla -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  

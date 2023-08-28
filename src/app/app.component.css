@@ -1,0 +1,13 @@
+.container {
+    min-height: 200vh;
+    height: auto;
+    margin: 0;
+}
+
+.example-icon{
+  min-width: 80px;
+}
+
+.example-icon-font{
+  font-size: 150%;
+}
