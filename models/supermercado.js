@@ -4,16 +4,16 @@ module.exports = function(sequelize, DataTypes) {
     PK_idSupermercado: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       primaryKey: true
     },
     nombre: {
       type: DataTypes.STRING(200),
-      allowNull: true
+      allowNull: false
     },
     direccion: {
       type: DataTypes.STRING(300),
-      allowNull: true
+      allowNull: false
     }
   }, {
     sequelize,

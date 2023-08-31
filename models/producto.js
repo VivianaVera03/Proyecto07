@@ -4,16 +4,16 @@ module.exports = function(sequelize, DataTypes) {
     PK_idProducto: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       primaryKey: true
     },
     nombre: {
       type: DataTypes.STRING(100),
-      allowNull: true
+      allowNull: false
     },
     categoria: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'categoria',
         key: 'PK_idCategoria'
@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     precio: {
       type: DataTypes.DECIMAL(6,2),
-      allowNull: true
+      allowNull: false
     },
     codigoBarras: {
       type: DataTypes.CHAR(13),
@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     idSupermercado: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'supermercado',
         key: 'PK_idSupermercado'
