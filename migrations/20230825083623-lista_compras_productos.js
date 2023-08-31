@@ -9,7 +9,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('listacompra');
+    await queryInterface.dropTable('lista_compras_productos');
   }
 };
 
