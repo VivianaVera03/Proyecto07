@@ -21,6 +21,7 @@ import { HttpClientModule } from  '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
+import {MatInputModule } from '@angular/material/input';
 
 const routes: Routes = [
     {path: "main", component: MainComponent },
@@ -54,7 +55,8 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

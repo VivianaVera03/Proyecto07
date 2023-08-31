@@ -1,1 +1,28 @@
-<p>main works!</p>
+<div class="container">
+    <h1>Consulta tus listas</h1>
+    <mat-form-field>
+        <input matInput placeholder="Nombre de usuario" [(ngModel)]="selectedIdUsuario">
+      </mat-form-field>
+      
+      <button mat-raised-button color="primary" (click)="showLists()">Mostrar listas</button>
+      
+      <div *ngIf="showSelect">
+        <mat-form-field>
+          <mat-label>Selecciona una lista</mat-label>
+          <mat-select [(ngModel)]="selectedListaId">
+            <mat-option *ngFor="let option of filteredOptions" [value]="option.PK_idLista">
+              {{ option.nombre }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      
+        <mat-list *ngIf="selectedListaId !== null">
+          <mat-list-item *ngFor="let product of getSelectedProducts(selectedListaId)">
+            {{ product.nombre }}
+          </mat-list-item>
+        </mat-list>
+      </div>
+      
+      <p class = "mensaje" *ngIf="cambio && !hasListsForUser()">No hay listas para este usuario.</p>
+      
+</div>

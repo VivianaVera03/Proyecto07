@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent {
-  description: string = 'Este proyecto realizado por Alejandra Cotrina, Viviana Vera y .... '; 
+  description: string = 'Este proyecto realizado por Alejandra Cotrina y Viviana Vera'; 
 }
