@@ -7,9 +7,7 @@ import { ReportComponent } from './pages/report/report.component';
 const routes: Routes = [
   {path: "main", component: MainComponent },
   {path: "about", component: AboutComponent },
-  {path: "report", component: ReportComponent },
-  {path: " ", redirectTo: '/main', pathMatch: 'full' },
-  {path: "**", redirectTo: "main" }
+  {path: "report", component: ReportComponent }
 ];
 
 export const appRouting = RouterModule.forRoot(routes);
