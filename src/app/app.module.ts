@@ -27,7 +27,6 @@ import {MatInputModule } from '@angular/material/input';
   declarations: [
     AppComponent,
     MainComponent,
-    ReportComponent,
     AboutComponent
   ],
 
@@ -47,7 +46,8 @@ import {MatInputModule } from '@angular/material/input';
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatInputModule
+    MatInputModule,
+    ReportComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
