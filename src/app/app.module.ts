@@ -9,8 +9,8 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
 import { ReportComponent } from './pages/report/report.component';
 import { AboutComponent } from './pages/about/about.component';
-import { MenuComponent } from './pages/menu/menu.component';
 
+import { MatTabsModule } from '@angular/material/tabs';
 import {MatSidenavModule } from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
@@ -23,31 +23,22 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import {MatInputModule } from '@angular/material/input';
 
-const routes: Routes = [
-    {path: "main", component: MainComponent },
-    {path: "about", component: AboutComponent },
-    {path: "report", component: ReportComponent },
-    {path: " ", redirectTo: '/main', pathMatch: 'full' },
-    {path: "**", redirectTo: "main" }
-];
-
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     ReportComponent,
-    AboutComponent,
-    MenuComponent    
+    AboutComponent
   ],
 
   imports: [
-    RouterModule.forRoot(routes),
     BrowserModule,   
     BrowserAnimationsModule, 
     AppRoutingModule,
     MatSidenavModule,
     MatListModule,
     MatIconModule,
+    MatTabsModule,
     MatToolbarModule,
     MatCardModule,
     FlexLayoutModule,

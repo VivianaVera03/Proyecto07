@@ -1,15 +1,9 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" mat-button (click)="drawer.toggle()">
-    <mat-icon class="example-icon-font">menu</mat-icon>
-    <span class="example-icon-text">Menu</span>
-  </button>
+  Gestor de Lista de Compras
 </mat-toolbar>
 
-<mat-drawer-container class="container">
-  <mat-drawer #drawer mode="side" opened>
-    <app-menu></app-menu>
-  </mat-drawer>
-  <mat-drawer-content>
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
+<mat-tab-group>
+  <mat-tab label="Main"> <app-main></app-main> </mat-tab>
+  <mat-tab label="Report"> <app-report></app-report></mat-tab>
+  <mat-tab label="About"> <app-about></app-about> </mat-tab>
+</mat-tab-group>
