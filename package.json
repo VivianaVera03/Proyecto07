@@ -5,7 +5,7 @@
   "scripts": {
     "swagger-autogen": "node swagger.js",
     "packages:install": "npm install sequelize pg && npm install --save-dev sequelize-cli",
-    "db:reset": "npx sequelize-cli db:seed:undo:all && npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate --debug && npx sequelize-cli db:seed:all",
+    "db:reset": "npx sequelize-cli db:seed:undo:all && npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:migrate --debug && npx sequelize-cli db:seed:all --debug",
     "start": "npm run packages:install && npm run db:reset && node ./bin/www"
   },
   "dependencies": {

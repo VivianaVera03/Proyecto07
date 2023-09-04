@@ -1,12 +1,6 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('lista_compras_productos', {
-    idListado: {
-      autoIncrement: true,
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true
-    },
     idLista: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -28,14 +22,6 @@ module.exports = function(sequelize, DataTypes) {
     tableName: 'lista_compras_productos',
     timestamps: false,
     indexes: [
-      {
-        name: "PRIMARY",
-        unique: true,
-        using: "BTREE",
-        fields: [
-          { name: "idListado" },
-        ]
-      },
       {
         name: "idLista",
         using: "BTREE",
