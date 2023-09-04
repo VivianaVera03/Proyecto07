@@ -1,58 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { MainComponent } from '../main/main.component';
 import { Listacompra } from 'src/app/interfaces/listacompra';
 import { Producto } from 'src/app/interfaces/producto';
 import { ConsultasService } from 'src/app/providers/consultas.service';
 import { ProductoService } from 'src/app/providers/producto.service';
+import { ListaComprasProductosService } from 'src/app/providers/lista-compras-productos.service';
 
-//Autcomplete
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { of } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-import { NgFor, AsyncPipe } from '@angular/common';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-
-import { MatButton, MatButtonModule } from '@angular/material/button';
+//Select
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { CompraProducto } from 'src/app/interfaces/compra-producto';
+
 
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.css'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatButtonModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    NgFor,
-    AsyncPipe,
-  ],
 })
 export class ReportComponent implements OnInit {
-  //Array de Objetos Lista Compra {PK_idLista: 4, idUsuario: 'emilyjones', nombre: 'Lista de Ofertas', creation_date: '2023-08-19T14:15:00.000Z'}
+  //Array de Objetos Lista Compra {PK_idLista: 4, idUsuario: 'emilyjones', nombre: 'Lista de Ofertas'}
   options: Listacompra[] = [];
 
   //Array de productos
   productos: Producto[] = [];
 
-  /** Autocomplete **/
-  myControl = new FormControl<string | Listacompra>('');
-  filteredOptions: Observable<Listacompra[]> | undefined;
+  //POST
+  listaComprasProductos : CompraProducto[] = [];
 
+  listaselected = MainComponent.ListaSeleccionada;
+  productosSelected = MainComponent.ProductosSeleccionados;  
   //Llamadas a los servicios
   constructor(
     private consultasService: ConsultasService,
-    private productoService: ProductoService
+    private productoService: ProductoService,
+    private listaCompraProductoService : ListaComprasProductosService,
   ) {}
+
+  addProducto(producto: any){
+    // if(this.productosSelected.find(producto)) this.showButton = false;
+    // console.log("Lista a anadir")
+    // console.log(this.listaselected )
+    // console.log("Productos en la lista")
+    // console.log(this.productosSelected )
+    // console.log("Producto Seleccionado")
+    // console.log(producto)
+    // console.log(this.showButton)
+    var nuevoListaProducto = {idLista: this.listaselected, idProducto: producto.PK_idProducto}
+    this.listaCompraProductoService.addListaComprasProductos(nuevoListaProducto)
+    .subscribe(data=> this.listaComprasProductos.push(data))
+  }
 
   ngOnInit() {
     //Obtener los objetos ListaCompras
@@ -71,32 +69,6 @@ export class ReportComponent implements OnInit {
       });
     });
 
-    //Autocompletar
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value =>{
-        const idUsuario = typeof value == 'string' ? value:value?.idUsuario;
-        return idUsuario?this._filter(idUsuario as string):this.options.slice();
-      }),
-    );
+}
 
-  } //ngoninit
-
-  displayFn(listacompra:Listacompra):string{
-    return listacompra&&listacompra.idUsuario?listacompra.idUsuario:'';
-  }
-
-  private _filter(idUsuario:string):Listacompra[]{
-    const filterValue = idUsuario.toLowerCase();
-    return this.options.filter(option => option.idUsuario.toLowerCase().includes(filterValue));
-  }
-
-  //Insertar valores en tabla
-  displayedColumns: string[] = [
-    'precio',
-    'nombre',
-    'categoria',
-    'codigoBarras',
-  ];
-  dataSource = this.productos;
 }

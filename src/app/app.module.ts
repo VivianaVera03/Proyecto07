@@ -22,12 +22,24 @@ import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import {MatInputModule } from '@angular/material/input';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+
+//Autcomplete
+import { FormControl} from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { NgFor, AsyncPipe } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    AboutComponent
+    AboutComponent,
+    ReportComponent,
   ],
 
   imports: [
@@ -47,7 +59,12 @@ import {MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatTableModule,
     MatInputModule,
-    ReportComponent
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    NgFor,
+    AsyncPipe,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -19,4 +19,10 @@ export class ListaComprasProductosService {
   getListaComprasProductosById(id: number): Observable<CompraProducto[]> {
     return this.http.get<CompraProducto[]>(`${this.baseURL}findById/${id}/json`);
   }
+
+  addListaComprasProductos(listacomprap: CompraProducto): Observable<CompraProducto> {
+    return this.http.post<CompraProducto>(`${this.baseURL}save`,listacomprap);
+  }
+
+
 }

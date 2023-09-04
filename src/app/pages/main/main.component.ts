@@ -1,4 +1,9 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+//Cuadro de dialogo
+import { ReportComponent } from '../report/report.component';
+import { MatDialog } from '@angular/material/dialog';
+
 import { Listacompra } from '../../interfaces/listacompra';
 import { ConsultasService } from '../../providers/consultas.service';
 import { CompraProducto } from '../../interfaces/compra-producto';
@@ -6,69 +11,100 @@ import { Producto } from '../../interfaces/producto';
 import { ListaComprasProductosService } from '../../providers/lista-compras-productos.service';
 import { ProductoService } from '../../providers/producto.service';
 import { ListaCompraService } from '../../providers/lista-compra.service';
-
-
+import { DialogConfig } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
 })
 
-export class MainComponent {
+export class MainComponent implements OnInit {
+
   options: Listacompra[] = [];
-  productos: Producto[] = [];
+  public productos: Producto[] = [];
   comprasProductos: CompraProducto[] = [];
   selectedIdUsuario: string = '';
-  selectedListaId: number | null = null; // Variable para almacenar el idLista seleccionado
+  public selectedListaId: number | null = null; // Variable para almacenar el idLista seleccionado
   showSelect: boolean = false;
   filteredOptions: Listacompra[] = []; // Variable para almacenar las opciones filtradas
   cambio: boolean = false;
+
+  static ListaSeleccionada = 0;
+  static ProductosSeleccionados: Producto[] = [];
 
   constructor(
     private consultasService: ConsultasService,
     private productoService: ProductoService,
     private listacompraService: ListaCompraService,
-    private listaComprasProductosService: ListaComprasProductosService
+    private listaComprasProductosService: ListaComprasProductosService,
+    public dialog: MatDialog
   ) {}
+
+  get selectedLista(){
+    return this.selectedListaId;
+  }
+
+  get productosLista(){
+    return this.productos;
+  }
+  //Abrir cuadro de dialogo (Productos)
+  openDialog() {
+    const dialogRef = this.dialog.open(ReportComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('Dialog Result: ${result}');
+    });
+  }
 
   ngOnInit() {
     // Obtiene los datos de los productos y las listas
-    this.consultasService.getResponse().subscribe(data => {
+    this.consultasService.getResponse().subscribe((data) => {
       this.options = data;
     });
 
     // Obtiene los datos de los productos (realiza la llamada al servicio correspondiente)
-    this.productoService.getProductos().subscribe(data => {
+    this.productoService.getProductos().subscribe((data) => {
       this.productos = data;
     });
+
   }
 
   showLists() {
     this.cambio = true;
-    this.listaComprasProductosService.getListaComprasProductos().subscribe(data => {
-      this.comprasProductos = data;
-      this.filterOptions();
-      this.showSelect = this.filteredOptions.length > 0;
-    });
+    this.listaComprasProductosService
+      .getListaComprasProductos()
+      .subscribe((data) => {
+        this.comprasProductos = data;
+        this.filterOptions();
+        this.showSelect = this.filteredOptions.length > 0;
+      });
+      
   }
 
   filterOptions() {
-    this.filteredOptions = this.options.filter(option =>
-      option.idUsuario.trim().toLowerCase() === this.selectedIdUsuario.trim().toLowerCase()
+    this.filteredOptions = this.options.filter(
+      (option) =>
+        option.idUsuario.trim().toLowerCase() ===
+        this.selectedIdUsuario.trim().toLowerCase()
     );
   }
 
   getSelectedProducts(selectedListaId: number): Producto[] {
-    return this.productos.filter(producto =>
-      this.comprasProductosExist(selectedListaId, producto.PK_idProducto)
-    );
+    MainComponent.ProductosSeleccionados = this.productos.filter((producto) =>
+    this.comprasProductosExist(selectedListaId, producto.PK_idProducto))
+    MainComponent.ListaSeleccionada = selectedListaId;
+    return MainComponent.ProductosSeleccionados
+    ;
   }
 
-  comprasProductosExist(selectedListaId: number, selectedProductoId: number): boolean {
+  comprasProductosExist(
+    selectedListaId: number,
+    selectedProductoId: number
+  ): boolean {
     return this.comprasProductos.some(
-      rel =>
-        rel.idListado === selectedListaId && rel.idProducto === selectedProductoId
+      (rel) =>
+        rel.idLista === selectedListaId && rel.idProducto === selectedProductoId
     );
   }
 

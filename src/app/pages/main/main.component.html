@@ -1,8 +1,8 @@
 <div class="container">
-    <h1>Consulta tus listas</h1>
+    <h1>Consulta tus Listas</h1>
     <mat-form-field>
         <input matInput placeholder="Nombre de usuario" [(ngModel)]="selectedIdUsuario">
-      </mat-form-field>
+    </mat-form-field>
       
       <button mat-raised-button color="primary" (click)="showLists()">Mostrar listas</button>
       
@@ -17,6 +17,7 @@
         </mat-form-field>
       
         <mat-list *ngIf="selectedListaId !== null">
+          <button mat-raised-button color="primary" (click)="openDialog()">Agregar Producto</button>
           <mat-list-item *ngFor="let product of getSelectedProducts(selectedListaId)">
             {{ product.nombre }}
           </mat-list-item>
