@@ -7,7 +7,7 @@ import { Producto } from '../interfaces/producto';
   providedIn: 'root'
 })
 export class ProductoService {
-  private baseURL = 'http://localhost:3000/rest/producto/';
+  private baseURL = 'https://proyecto07-production.up.railway.app/rest/producto/';
 
   constructor(private http: HttpClient) {}
 
