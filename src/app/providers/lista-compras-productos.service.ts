@@ -8,7 +8,7 @@ import { CompraProducto } from '../interfaces/compra-producto';
 })
 export class ListaComprasProductosService {
 
-  private baseURL = 'http://localhost:3000/rest/lista_compras_productos/';
+  private baseURL = 'https://proyecto07-production.up.railway.app/rest/lista_compras_productos/';
 
   constructor(private http: HttpClient) {}
 
