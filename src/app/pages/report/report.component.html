@@ -1,0 +1,37 @@
+<!-- GALERIA DE PRODUCTOS -->
+
+<mat-dialog-content class="root">
+  <div class="parent">
+    <div class="container" fxLayout="row wrap" *ngFor="let producto of productos">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title id="nproducto">{{ producto.nombre }}</mat-card-title>
+          <!-- <mat-card-subtitle>{{producto.categoria}}</mat-card-subtitle> -->
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="/assets/productos/{{producto.PK_idProducto}}.png"
+          alt="{{producto.nombre}}"
+        />
+        <mat-card-content>
+          <p>${{ producto.precio }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="show" mat-raised-button color="primary" (click)="addProducto(producto)">Añadir</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <div class="divider">
+    <div>
+      <h3>Lista de Compras</h3>
+      <ul id="productosParaAñadir">
+      </ul>
+    </div>
+    <button mat-raised-button color="primary" (click)="sync()">
+      Guardar Cambios
+    </button>
+  </div>
+</mat-dialog-content>
+
+<!-- FIN GALERIA -->

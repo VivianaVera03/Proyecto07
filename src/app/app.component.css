@@ -1,0 +1,18 @@
+.container {
+  min-height: 100vh;
+  height: auto;
+  margin: 0;
+}
+
+.example-icon {
+  display: flex;
+  align-items: center;
+}
+
+.example-icon-font {
+  margin-right: 5px;
+}
+
+.example-icon-text {
+  white-space: nowrap;
+}

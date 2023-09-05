@@ -1,0 +1,64 @@
+<div class="container">
+  <img id="banner" src="assets/banner/banner.jpg" />
+
+  <div class="card">
+    <mat-card>
+      <h1>Consulta tus Listas</h1>
+      <mat-form-field>
+        <input matInput placeholder="Usuario" [(ngModel)]="selectedIdUsuario" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="showLists()">
+        Ver Listas
+      </button>
+    </mat-card>
+
+    <mat-card>
+      <div *ngIf="showSelect">
+        <mat-form-field>
+          <mat-label>Selecciona una lista</mat-label>
+          <mat-select [(ngModel)]="selectedListaId">
+            <mat-option
+              *ngFor="let option of filteredOptions"
+              [value]="option.PK_idLista"
+            >
+              {{ option.nombre }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-list *ngIf="selectedListaId !== null">
+          <mat-icon
+            id="agregar"
+            (click)="openDialog()"
+            fontIcon="add_circle"
+          ></mat-icon>
+          <mat-icon
+            id="sync"
+              fontIcon="sync"
+              color="primary"
+              (click)="showLists()"
+            ></mat-icon
+            >
+          
+          <mat-list-item
+            *ngFor="let product of getSelectedProducts(selectedListaId)"
+          >
+            <mat-icon
+            id="delete"
+              fontIcon="delete_forever"
+              (click)="eliminarProductodeLista(product)"
+            ></mat-icon
+            >{{ product.nombre }}
+          </mat-list-item>
+
+        </mat-list>
+      </div>
+      
+
+      <p class="mensaje" *ngIf="cambio && !hasListsForUser()">
+        No hay listas para este usuario.
+      </p>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+.container {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  align-items: center;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 400px;
+}
+
+mat-card:first-child {
+  background-color: rgb(234, 255, 180);
+  align-content: center;
+  align-items: center;
+  padding: 10%;
+}
+
+mat-card:last-child {
+  display: flex;
+  flex-flow: column;
+  overflow-y: scroll;
+  padding: 5%;
+}
+
+mat-card:first-child:hover {
+  background-color: rgb(212, 232, 162);
+}
+
+button {
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 90px;
+}
+
+mat-form-field {
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+}
+
+.mensaje {
+  margin-top: 10px;
+  color: red;
+}
+
+#banner {
+  height: fit-content;
+  width: 100%;
+}
+
+#agregar {
+    font-size: 24px;
+    width: auto;
+    height: fit-content;
+}
+
+#agregar:hover {
+    font-size: 25px;
+    color: green;
+}
+
+#delete{
+    font-size: 24px;
+    width: auto;
+    height: fit-content;
+    color: red;
+}
+
+#delete:hover {
+    font-size: 25px;
+    color: rgb(154, 0, 0);
+}
+
+#sync:hover{
+    font-size: 25px;
+    color: rgb(0, 185, 58);
+
+}
+
+
