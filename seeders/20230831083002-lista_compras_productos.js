@@ -5,70 +5,61 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('lista_compras_productos', [
       {
-        PK_id: 1,
+        idListado: 1,
         idLista: 1,
         idProducto: 1,
       },
       {
-        PK_id: 2,
+        idListado: 2,
         idLista: 2,
         idProducto: 3,
       },
       {
-        PK_id: 3,
+        idListado: 3,
         idLista: 3,
         idProducto: 2,
       },
       {
-        PK_id: 4,
+        idListado: 4,
         idLista: 4,
         idProducto: 4,
       },
       {
-        PK_id: 5,
+        idListado: 5,
         idLista: 5,
         idProducto: 5,
       },
       {
-        PK_id: 6,
+        idListado: 6,
         idLista: 6,
         idProducto: 1,
       },
       {
-        PK_id: 7,
+        idListado: 7,
         idLista: 7,
         idProducto: 3,
       },
       {
-        PK_id: 8,
+        idListado: 8,
         idLista: 8,
         idProducto: 2,
       },
       {
-        PK_id: 9,
+        idListado: 9,
         idLista: 9,
         idProducto: 4,
       },
       {
-        PK_id: 10,
+        idListado: 10,
         idLista: 10,
         idProducto: 5,
       },
       {
-        PK_id: 11,
+        idListado: 11,
         idLista: 11,
         idProducto: 3,
       },
-      {
-        PK_id: 12,
-        idLista: 11,
-        idProducto: 2,
-      },
-      {
-        PK_id: 13,
-        idLista: 11,
-        idProducto: 1,
-      },
+      
       ], {});
   },
 

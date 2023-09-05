@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     nombre: {
-      type: DataTypes.STRING(150),
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     categoria: {
@@ -26,6 +26,14 @@ module.exports = function(sequelize, DataTypes) {
     codigoBarras: {
       type: DataTypes.CHAR(13),
       allowNull: true
+    },
+    idSupermercado: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'supermercado',
+        key: 'PK_idSupermercado'
+      }
     }
   }, {
     sequelize,
@@ -38,6 +46,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "PK_idProducto" },
+        ]
+      },
+      {
+        name: "idSupermercado",
+        using: "BTREE",
+        fields: [
+          { name: "idSupermercado" },
         ]
       },
       {
