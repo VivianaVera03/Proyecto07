@@ -18,11 +18,6 @@ module.exports = function(sequelize, DataTypes) {
     nombre: {
       type: DataTypes.STRING(50),
       allowNull: false
-    },
-    creation_date: {
-      type: DataTypes.DATE,
-      allowNull: true,
-      defaultValue: Sequelize.Sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
     sequelize,
