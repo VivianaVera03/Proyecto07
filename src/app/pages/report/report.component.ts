@@ -66,6 +66,8 @@ export class ReportComponent implements OnInit {
         this.filterOptions();
         this.showSelect = this.filteredOptions.length > 0;
       });
+
+    
   }
 
   filterOptions() {

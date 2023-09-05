@@ -94,8 +94,10 @@ export class MainComponent implements OnInit {
     this.productoService.getProductos().subscribe((data) => {
       this.productos = data;
     });
+
   }
 
+  
   showLists() {
     this.cambio = true;
     this.listaComprasProductosService
