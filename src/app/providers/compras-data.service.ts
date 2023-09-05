@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class ComprasDataService {
   //Atributo URL
-  private URL: string = "http://localhost:3000/rest/Cliente/findAll/json"
+  private URL: string = "https://proyecto07-production.up.railway.app/rest/cliente/findAll/json"
 
 
   //Método con la petición HTTP
