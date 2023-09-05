@@ -24,5 +24,8 @@ export class ListaComprasProductosService {
     return this.http.post<CompraProducto>(`${this.baseURL}save`,listacomprap);
   }
 
+  deleteListaComprasProductos(id: number):Observable<{}>{
+    return this.http.delete(`${this.baseURL}delete/${id}`);
+  }
 
 }

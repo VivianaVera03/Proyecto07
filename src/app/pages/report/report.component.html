@@ -1,56 +1,36 @@
-<!-- TODO: Añadir a la base da datos en producto descripcion y Foto<br /> -->
-
-<!-- AUTOCOMPLETE -->
-<!-- <form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Usuario</mat-label>
-    <input
-      type="text"
-      matInput
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
-    />
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-      <mat-option
-        *ngFor="let option of filteredOptions | async"
-        [value]="option"
-      >
-        {{ option.idUsuario }}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</form>
-<button mat-raised-button color="primary">Aceptar</button> -->
-<!-- FIN AUTOCOMPLETE -->
-
 <!-- GALERIA DE PRODUCTOS -->
 
-<mat-dialog-content class="mat-typography">
-  <div *ngFor="let producto of productos">
-    <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title id="nproducto">{{ producto.nombre }}</mat-card-title>
-        <!-- <mat-card-subtitle>{{producto.categoria}}</mat-card-subtitle> -->
-      </mat-card-header>
-      <img
-        mat-card-image
-        src="/assets/productos/{{producto.PK_idProducto}}.png"
-        alt="{{producto.nombre}}"
-      />
-      <mat-card-content>
-        <p>${{ producto.precio }}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <!-- OPCION DE LISTAS -->
-        <!-- <mat-form-field>
-          <mat-label>Añadir a Lista</mat-label>
-          <select matNativeControl name="selectedCompetence" [(ngModel)]="filteredOptions">
-            <option *ngFor="let lista of options" [ngValue]="lista">{{lista.nombre}}</option>
-          </select>
-        </mat-form-field> -->
-        <button mat-raised-button color="primary" (click)="addProducto(producto)">Añadir</button>
-      </mat-card-actions>
-    </mat-card>
+<mat-dialog-content class="root">
+  <div class="parent">
+    <div class="container" fxLayout="row wrap" *ngFor="let producto of productos">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title id="nproducto">{{ producto.nombre }}</mat-card-title>
+          <!-- <mat-card-subtitle>{{producto.categoria}}</mat-card-subtitle> -->
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="/assets/productos/{{producto.PK_idProducto}}.png"
+          alt="{{producto.nombre}}"
+        />
+        <mat-card-content>
+          <p>${{ producto.precio }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="show" mat-raised-button color="primary" (click)="addProducto(producto)">Añadir</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <div class="divider">
+    <div>
+      <h3>Lista de Compras</h3>
+      <ul id="productosParaAñadir">
+      </ul>
+    </div>
+    <button mat-raised-button color="primary">
+      Guardar Cambios
+    </button>
   </div>
 </mat-dialog-content>
 

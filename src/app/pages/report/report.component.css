@@ -1,21 +1,31 @@
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
-  
-  table {
-    width: 100%;
-  }
-  
-  .example-card {
-    max-width: 200px;
-  }
+.example-card{
+  width: 100%;
+  margin: 5px;
+  align-items: center;
+}
 
-  #nproducto{
-    text-align: center;
-  }
+img{
+  width: 150px;
+  height: 150px;
+}
+
+.parent{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 65%;
+}
+
+.container{
+  width: 50%;
+  display: flex;
+}
+
+.divider{
+  width: 35%;
+}
+
+.root{
+  display: flex;
+  flex-direction: row-reverse;
+}

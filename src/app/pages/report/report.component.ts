@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MainComponent } from '../main/main.component';
@@ -12,6 +12,7 @@ import { ListaComprasProductosService } from 'src/app/providers/lista-compras-pr
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CompraProducto } from 'src/app/interfaces/compra-producto';
+import { MatCard } from '@angular/material/card';
 
 
 @Component({
@@ -20,6 +21,8 @@ import { CompraProducto } from 'src/app/interfaces/compra-producto';
   styleUrls: ['./report.component.css'],
 })
 export class ReportComponent implements OnInit {
+
+  message = 'Su producto ha sido añadido'
   //Array de Objetos Lista Compra {PK_idLista: 4, idUsuario: 'emilyjones', nombre: 'Lista de Ofertas'}
   options: Listacompra[] = [];
 
@@ -31,6 +34,12 @@ export class ReportComponent implements OnInit {
 
   listaselected = MainComponent.ListaSeleccionada;
   productosSelected = MainComponent.ProductosSeleccionados;  
+  cambio: boolean = false;
+  comprasProductos: CompraProducto[] = [];
+  filteredOptions: Listacompra[] = []; 
+  showSelect: boolean = false;
+  selectedIdUsuario: string = '';
+
   //Llamadas a los servicios
   constructor(
     private consultasService: ConsultasService,
@@ -39,17 +48,32 @@ export class ReportComponent implements OnInit {
   ) {}
 
   addProducto(producto: any){
-    // if(this.productosSelected.find(producto)) this.showButton = false;
-    // console.log("Lista a anadir")
-    // console.log(this.listaselected )
-    // console.log("Productos en la lista")
-    // console.log(this.productosSelected )
-    // console.log("Producto Seleccionado")
-    // console.log(producto)
-    // console.log(this.showButton)
-    var nuevoListaProducto = {idLista: this.listaselected, idProducto: producto.PK_idProducto}
+    var nuevoId=this.listaComprasProductos.length+1
+    var nuevoListaProducto = {PK_id: nuevoId,idLista: this.listaselected, idProducto: producto.PK_idProducto}
     this.listaCompraProductoService.addListaComprasProductos(nuevoListaProducto)
     .subscribe(data=> this.listaComprasProductos.push(data))
+
+    let ListaForAdd = <HTMLElement>document.getElementById('productosParaAñadir')
+    ListaForAdd.innerHTML +=`<li>`+producto.nombre+`</li>`;
+  }
+
+  
+  sync(){
+    this.cambio = true;
+    this.listaCompraProductoService.getListaComprasProductos()
+      .subscribe((data) => {
+        this.comprasProductos = data;
+        this.filterOptions();
+        this.showSelect = this.filteredOptions.length > 0;
+      });
+  }
+
+  filterOptions() {
+    this.filteredOptions = this.options.filter(
+      (option) =>
+        option.idUsuario.trim().toLowerCase() ===
+        this.selectedIdUsuario.trim().toLowerCase()
+    );
   }
 
   ngOnInit() {
@@ -68,6 +92,12 @@ export class ReportComponent implements OnInit {
         this.productos.push(value);
       });
     });
+
+    this.listaCompraProductoService.getListaComprasProductos().subscribe((data) =>{
+      data.forEach((value) => {
+        this.listaComprasProductos.push(value);
+      })
+    })
 
 }
 

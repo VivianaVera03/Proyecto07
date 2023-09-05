@@ -4,5 +4,4 @@ export interface Producto {
     categoria: number;
     precio: number;
     codigoBarras: string;
-    idSupermercado: number;
 }

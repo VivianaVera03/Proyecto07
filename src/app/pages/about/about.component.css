@@ -1,11 +1,49 @@
-.container {
+.about-card {
     min-height: 91vh;
     height: auto;
     margin: 0;
+    background-color: rgb(212, 232, 162);
+    padding: 4rem;
 }
 
-.container {
-    padding-top: 2vh;
-    padding-left: 2vw;
-    padding-right: 2vw;
+.sub-about-card {
+    height: auto;
+    margin: 0;
+    background-color: rgb(212, 232, 162);
+    width: 50%;
+}
+
+.sub-content{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+}
+
+.sub-content:hover{
+    background-color: rgb(203, 203, 203);
+}
+
+
+.container-sub{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.content{
+    margin: 10px;
+    padding: 3rem;
+    background-color: white;
+}
+
+img{
+    border-radius: 100%;
+    width: 50%;
+}
+
+.sub-content>p{
+    padding: 5rem;
+    font-size: large;
 }

@@ -33,13 +33,12 @@ import { NgFor, AsyncPipe } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     AboutComponent,
-    ReportComponent,
+    ReportComponent
   ],
 
   imports: [
@@ -64,7 +63,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatAutocompleteModule,
     NgFor,
-    AsyncPipe,
+    AsyncPipe
   ],
   providers: [],
   bootstrap: [AppComponent]

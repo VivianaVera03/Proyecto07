@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 //Cuadro de dialogo
 import { ReportComponent } from '../report/report.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatCard } from '@angular/material/card';
 
 import { Listacompra } from '../../interfaces/listacompra';
 import { ConsultasService } from '../../providers/consultas.service';
@@ -12,6 +13,10 @@ import { ListaComprasProductosService } from '../../providers/lista-compras-prod
 import { ProductoService } from '../../providers/producto.service';
 import { ListaCompraService } from '../../providers/lista-compra.service';
 import { DialogConfig } from '@angular/cdk/dialog';
+
+import { MatListModule } from '@angular/material/list';
+import { MatListOption } from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-main',
@@ -31,7 +36,7 @@ export class MainComponent implements OnInit {
   cambio: boolean = false;
 
   static ListaSeleccionada = 0;
-  static ProductosSeleccionados: Producto[] = [];
+  public static ProductosSeleccionados: Producto[] = [];
 
   constructor(
     private consultasService: ConsultasService,
@@ -48,13 +53,35 @@ export class MainComponent implements OnInit {
   get productosLista(){
     return this.productos;
   }
+
   //Abrir cuadro de dialogo (Productos)
   openDialog() {
-    const dialogRef = this.dialog.open(ReportComponent);
+    const dialogRef = this.dialog.open(ReportComponent, {
+      width:'850px',
+      height:'450px',
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('Dialog Result: ${result}');
     });
+  }
+
+  eliminarProductodeLista(producto: any):void{
+    var listaEliminar = 0;
+    this.comprasProductos.forEach((LCP)=>{
+      if(LCP.idLista == this.selectedListaId && LCP.idProducto==producto.PK_idProducto){
+        console.log(LCP.PK_id)
+         listaEliminar = LCP.PK_id
+      }   
+    })
+
+    if(listaEliminar!=0){
+      this.listaComprasProductosService.deleteListaComprasProductos(listaEliminar).subscribe();
+    }else{
+      console.log("No se pudo eliminar!!!!")
+    }
+
+
   }
 
   ngOnInit() {
@@ -67,7 +94,6 @@ export class MainComponent implements OnInit {
     this.productoService.getProductos().subscribe((data) => {
       this.productos = data;
     });
-
   }
 
   showLists() {
