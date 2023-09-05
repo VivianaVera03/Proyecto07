@@ -7,7 +7,7 @@ import { Listacompra } from '../interfaces/listacompra';
   providedIn: 'root'
 })
 export class ListaCompraService {
-  private baseURL = 'http://localhost:3000/rest/listacompra/';
+  private baseURL = 'https://proyecto07-production.up.railway.app/rest/listacompra/';
 
   constructor(private http: HttpClient) {}
 
