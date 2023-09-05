@@ -10,7 +10,7 @@ import { ProductoLista } from '../interfaces/producto-lista';
 
 export class ConsultasService {
   //Atributo URL
-  private URL: string = "http://localhost:3000/rest/listacompra/findAll/json"  
+  private URL: string = "https://proyecto07-production.up.railway.app/rest/listacompra/findAll/json"  
   
 
   // Método con la petición HTTP
