@@ -10,7 +10,6 @@ module.exports = {
         categoria: 1,
         precio: 2.99,
         codigoBarras: '1234567890123',
-        idSupermercado: 1,
       },
       {
         PK_idProducto: 2,
@@ -18,7 +17,6 @@ module.exports = {
         categoria: 2,
         precio: 19.99,
         codigoBarras: '9876543210987',
-        idSupermercado: 2,
       },
       {
         PK_idProducto: 3,
@@ -26,7 +24,6 @@ module.exports = {
         categoria: 3,
         precio: 4.49,
         codigoBarras: '5678901234567',
-        idSupermercado: 3,
       },
       {
         PK_idProducto: 4,
@@ -34,7 +31,6 @@ module.exports = {
         categoria: 4,
         precio: 3.75,
         codigoBarras: '5432109876543',
-        idSupermercado: 4,
       },
       {
         PK_idProducto: 5,
@@ -42,7 +38,6 @@ module.exports = {
         categoria: 5,
         precio: 9.50,
         codigoBarras: '6789054321098',
-        idSupermercado: 5,
       },
       
       ], {});

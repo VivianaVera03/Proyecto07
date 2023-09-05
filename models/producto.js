@@ -27,14 +27,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.CHAR(13),
       allowNull: true
     },
-    idSupermercado: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'supermercado',
-        key: 'PK_idSupermercado'
-      }
-    }
   }, {
     sequelize,
     tableName: 'producto',
@@ -46,13 +38,6 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "PK_idProducto" },
-        ]
-      },
-      {
-        name: "idSupermercado",
-        using: "BTREE",
-        fields: [
-          { name: "idSupermercado" },
         ]
       },
       {
