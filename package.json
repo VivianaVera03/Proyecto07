@@ -22,6 +22,8 @@
     "pg": "^8.11.3",
     "railway": "^2.0.17",
     "react-native-paper": "^5.10.4",
+    "react-native-safe-area-context": "^4.7.2",
+    "react-native-vector-icons": "^10.0.0",
     "sequelize": "^6.32.1",
     "sequelize-auto": "^0.8.8",
     "swagger-autogen": "^2.23.5",
