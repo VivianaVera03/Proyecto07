@@ -8,8 +8,9 @@ use comprasOnline;
 DROP TABLE IF EXISTS cliente;
 CREATE TABLE cliente(
 PK_idUsuario VARCHAR(50) PRIMARY KEY,
-nombre VARCHAR(50) NOT NULL,
-email VARCHAR(100) NOT NULL
+nombre VARCHAR(100) NOT NULL,
+email VARCHAR(100) NOT NULL,
+password VARCHAR(100) NOT NULL
 );
 
 
@@ -21,21 +22,6 @@ nombre VARCHAR(50) NOT NULL,
 FOREIGN KEY (idUsuario) REFERENCES cliente (PK_idUsuario)
 );
 
-
-DROP TABLE IF EXISTS supermercado;
-CREATE TABLE supermercado(
-PK_idSupermercado INT auto_increment PRIMARY KEY,
-nombre VARCHAR(200) NOT NULL,
-direccion VARCHAR(300) NOT NULL
-);
-
--- INSERT INTO supermercado (PK_idSupermercado, nombre, direccion)
--- VALUES
---     ('1', 'Supermaxi Urdesa', 'Barrio las Lomas, Av. Del Rotarismo No. 3 Cdla Urdesa Central, Mz 41.'),
---     ('2', 'Supermaxi Ciudad Celeste', ' Av. León Febres Cordero. Ribadeneyra - Centro Comercial La Piazza. Ciudad Celeste'),
---     ('3', 'Supermaxi Vía a la Costa', ' Vía a la Costa Km 13'),
---     ('4', 'Supermaxi La Joya', ' Av. León Febres Cordero Km 14 1/2 (CC La Piazza - La Joya)'),
---     ('5', 'Megamaxi City Mall', 'Av. Felipe Pezo s/n y Av Benjamín Carrión');
 
 DROP TABLE IF EXISTS categoria;
 CREATE TABLE categoria(
@@ -59,8 +45,6 @@ nombre VARCHAR(100) NOT NULL,
 categoria INT NOT NULL,
 precio DECIMAL(6,2) NOT NULL,
 codigoBarras char(13),
-idSupermercado INT NOT NULL,
-FOREIGN KEY (idSupermercado) REFERENCES supermercado(PK_idSupermercado),
 FOREIGN KEY (categoria) REFERENCES categoria(PK_idCategoria)
 );
 
